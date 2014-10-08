@@ -12,11 +12,11 @@ function gameInitialize() {
     var canvas = document.getElementById("game-screen"); 
     context = canvas.getContext("2d");
     
-    screenwidth = window.innerWidth;
-    screenheight = window.innerHeight;
+    screenWidth = window.innerWidth;
+    screenHeight = window.innerHeight;
     
-    canvas.width = screenwidth;
-    canvas.height = screenheight;
+    canvas.width = screenWidth;
+    canvas.height = screenHeight;
 }
 
 function gameLoop () {
@@ -43,7 +43,7 @@ function snakeInitialize(){
 
 function snakeDraw(){
     for(var index = 0; snake.length; index++) {
-        context. fillStyle = "white";
+        context.fillStyle = "white";
         context.fillStyle(snake[index]);
     }
 }
