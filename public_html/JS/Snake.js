@@ -15,8 +15,8 @@ function gameInitialize() {
     screenWidth = window.innerWidth;
     screenHeight = window.innerHeight;
     
-    canvas.width = screenWidth;
-    canvas.height = screenHeight;
+    canvas.Width = screenWidth;
+    canvas.Height = screenHeight;
 }
 
 function gameLoop () {
@@ -25,7 +25,7 @@ function gameLoop () {
 
 function gameDraw() {
     context.fillStyle ="rgb(47,142,222)";
-    context.fillRect(0,0,screenwidth,screenheight);
+    context.fillRect(0,0,screenWidth,screenHeight);
 }
 
 function snakeInitialize(){
@@ -37,14 +37,14 @@ function snakeInitialize(){
             x: index,
             y: 0
         });
-
+ 
     }
 }
 
 function snakeDraw(){
     for(var index = 0; snake.length; index++) {
         context.fillStyle = "white";
-        context.fillStyle(snake[index]);
+        context.fillStyle(snake[index].x * snakesize,snake[index].y * snakeSize,sankeSize,snakeSize);
     }
 }
 
