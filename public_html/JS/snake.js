@@ -22,7 +22,7 @@ var screenHeight;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 1000/25);
+setInterval(gameLoop, 1000/30);
 
 /* ---------------------------------------------------------------------------
  * Game funnctions
@@ -100,6 +100,8 @@ function snakeUpdate(){
     else if(snakeDirection == "up"){
         snakeHeadY--;
     }
+       checkFoodCollision (snakeHeadX, snakeHeadY);
+       checkWallCollisions(snakeHeadX, snakeHeadY);
        
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
@@ -122,7 +124,7 @@ function snakeUpdate(){
    
    function foodDraw(){
        context.fillStyle = "darkturqoise";
-       context.fillRect(food.x, food.y , snakeSize, snakeSize);
+       context.fillRect(food.x * snakeSize, food.y * snakeSize, snakeSize, snakeSize);
  }  
  
  function setFoodPosition(){
@@ -134,7 +136,7 @@ function snakeUpdate(){
  }
    
  function keyboardHandler(event){
-     console.log("Hi");
+       console.log("Hi");
        console.log(event);
        
     if(event.keyCode == "39") {
@@ -155,3 +157,20 @@ function snakeUpdate(){
   * Collision Handeling
   * ---------------------------------------------------------------------------
   */
+ 
+ function checkFoodCollision(snakeHeadX, snakeHeadY){
+     if(snakeHeadX == food.x && snakeHeadY == food.y){
+       snake.push({
+           x: 0,
+           y: 0
+       });
+       snakeLength++;
+       setFoodPosition();
+     }
+ }
+ 
+function checkWallCollisions(snakeHeadX, snakeHeadY){
+    if(snakeHeadX *  snakeSize >= screenWidth) {
+        console.log("Wall Collisions");
+    }
+}
