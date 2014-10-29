@@ -13,6 +13,7 @@ var food;
 var context;
 var screenWidth;
 var screenHeight;
+var gameState;
 
 /*----------------------------------------------------------------------------
  * Executing Game code
@@ -39,17 +40,21 @@ function gameInitialize() {
     canvas.width = screenWidth;
     canvas.height = screenHeight;
     document.addEventListener("keydown", keyboardHandler);
+    
+    setState("play");
 }
 
 function gameLoop () {
     gameDraw();
-    snakeUpdate();
-    snakeDraw();
-    foodDraw();
+    if(gameState == "PLAY");{
+       snakeUpdate();
+       snakeDraw();
+       foodDraw();
+    }
 }
 
 function gameDraw() {
-    context.fillStyle = "rgb(5,5,5)";
+    context.fillStyle = "rgb(3,7,255)";
     context.fillRect(0, 0, screenWidth, screenHeight);
     
    }
@@ -101,7 +106,7 @@ function snakeUpdate(){
         snakeHeadY--;
     }
        checkFoodCollision (snakeHeadX, snakeHeadY);
-       checkWallCollisions(snakeHeadX, snakeHeadY);
+       checkWallCollision (snakeHeadX, snakeHeadY);
        
     var snakeTail = snake.pop();
     snakeTail.x = snakeHeadX;
@@ -169,8 +174,17 @@ function snakeUpdate(){
      }
  }
  
-function checkWallCollisions(snakeHeadX, snakeHeadY){
-    if(snakeHeadX *  snakeSize >= screenWidth) {
-        console.log("Wall Collisions");
+function checkWallCollision (snakeHeadX, snakeHeadY){
+    if(snakeHeadX *  snakeSize >= screenWidth || snakeHeadX < 0 * snakeSize) {
+        setGame("GAME OVER");
     }
+}
+
+/*-----------------------------------------------------------------------------
+ * Game State Handeling
+ * ----------------------------------------------------------------------------
+ */
+
+function setState(state) {
+    gameState = state;
 }
