@@ -9,5 +9,26 @@ body{
 
 #gameOver {
     position: absolute;
-  
+    visibility: hidden;
+}
+
+h1 ,h3{
+  font-family: 'Permanent Marker', cursive; 
+  text-align: center;
+  color: white;
+}
+
+.title {
+    font-size: 100px; 
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#restartbutton{
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#restartbutton:hover{
+    background-color: #03ECFC;
 }
