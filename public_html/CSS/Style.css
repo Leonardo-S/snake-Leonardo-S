@@ -24,11 +24,11 @@ h1 ,h3{
     margin-top: 0px;
 }
 
-#restartbutton{
+#restartButton{
     border: 2px solid white;
     border-radius: 10px;
 }
 
-#restartbutton:hover{
+#restartButton:hover{
     background-color: #03ECFC;
 }
