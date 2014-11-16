@@ -24,7 +24,7 @@ var restartButton;
 gameInitialize();
 snakeInitialize();
 foodInitialize();
-setInterval(gameLoop, 1000/30);
+setInterval(gameLoop, 1000/20);
 
 /* ---------------------------------------------------------------------------
  * Game funnctions
@@ -61,7 +61,7 @@ function gameLoop () {
 }
 
 function gameDraw() {
-    context.fillStyle = "rgb(3,7,255)";
+    context.fillStyle = "rgb(250,205,2)";
     context.fillRect(0, 0, screenWidth, screenHeight);
     
    }
@@ -82,7 +82,7 @@ function snakeInitialize(){
     snake = [];
     snakeLength = 10;
     snakeSize = 20;
-    snakeDirection = "down";
+    snakeDirection = "right";
     
     for(var index = 0; index < snakeLength; index++){
         snake.push({
@@ -95,9 +95,9 @@ function snakeInitialize(){
 
 function snakeDraw(){
     for(var index = 0; index < snake.length; index++){
-       context.fillStyle = " darkturquoise";
+       context.fillStyle = "gold";
        context.fillRect(snake[index].x * snakeSize, snake[index].y * snakeSize,snakeSize,snakeSize);
-       context.strokeStyle = "darkturqoise";
+       context.strokeStyle = "black";
        context.strokeRect(snake[index].x * snakeSize, snake[index].y * snakeSize,snakeSize,snakeSize);
       
    }
@@ -144,8 +144,10 @@ function snakeUpdate(){
    }
    
    function foodDraw(){
-       context.fillStyle = "darkturqoise";
+       context.fillStyle = "black";
        context.fillRect(food.x * snakeSize, food.y * snakeSize, snakeSize, snakeSize);
+       context.strokeStyle = "darkturqoise";
+       context.srokeRect(food.x * snakeSize,food.y * snakeSize,snakeSize,snakeSize)
  }  
  
  function setFoodPosition(){
@@ -160,16 +162,16 @@ function snakeUpdate(){
        console.log("Hi");
        console.log(event);
        
-    if(event.keyCode == "39") {
+    if(event.keyCode == "39" && snakeDirection!="left") {
         snakeDirection = "right";
     }  
-    else if(event.keyCode == "40") {
+    else if(event.keyCode == "40" && snakeDirection!="up") {
         snakeDirection = "down";
     }  
-    else if(event.keyCode == "37") {
+    else if(event.keyCode == "37" && snakeDirection!="right") {
         snakeDirection = "left";
     }  
-    else if(event.keyCode == "38") {
+    else if(event.keyCode == "38" && snakeDirection!="down") {
         snakeDirection = "up";
     }
  }
