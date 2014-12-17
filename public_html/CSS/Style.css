@@ -7,12 +7,12 @@ body{
     display:block;
 }
 
-#gameOver {
+#gameOver ,#playHUD{
     position: absolute;
     visibility: hidden;
 }
 
-h1 ,h3{
+h1 ,h2 ,h3{
   font-family: "Permanent Marker", cursive; 
   text-align: center;
   color: white;
@@ -31,4 +31,8 @@ h1 ,h3{
 
 #restartButton:hover{
     background-color: #f2FF00;
+}
+
+#scoreboard {
+    margin: 0;
 }
